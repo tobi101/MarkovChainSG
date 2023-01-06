@@ -1,25 +1,34 @@
 #include <iostream>
 #include <string>
 
+	
+float** parser(std::string input_text)
+{
+	std::string unic_word[100] = {};
+	std::string start_word[100] = {};
+	std::string end_word[100] = {};
+	
+	bool isStart = true;
+	bool isEnd = false;
 
-/*
-* Что мне следует сделать в первую очередь?
-* 1.1. На вход поступает текст. Из этого текста мы считываем:
-* -- Unic word - все уникальные слова в тексте:
-* ---- Их количество
-* ---- Какие другие уникальные слова идут после этого слова
-* 1.2. На выходе мы должны получить двумерную Матрицу переходов.
-* -- Под индексами подразумеваются Unic word.
-* -- В качестве значений выступают значения от 0 до 1. Это вероятность выпадения слова в столбце если сгенерировалось слово в строке.
-* 1.3. По итогу мы получаем:
-* -- Двумерный массив со словами Unic word
-* 
-* 2. Делаем генератор предложений.
-*/
+	float** transition_matrix = {};
+
+	for (int i = 0; i < input_text.length(); i++)
+	{
+		if (isStart == true)
+		{
+			// ...write here...
+			isStart == false;
+		}
+	}
+
+	return transition_matrix;
+}
 
 
 int main()
 {
+
 	std::cout << "Hello, world!" << std::endl;
 	return 0;
 }
