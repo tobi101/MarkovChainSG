@@ -1,27 +1,30 @@
 #include <iostream>
 #include <string>
 #include <unordered_map>
+#include <vector>
 
 
 /*
-* 1. Парсер
+* 1. Parser
 * In: Sentence
-* Out: Transition Matrix
+* Out: Hash maps of words
 * 
-* -- unic_word - hash map for unic words
-* -- start_word - hash map for start words
-* -- end_word - hash map for end words
+* -- unic_word - hash map for unic words of sentence
+* -- start_word - hash map for start words of sentence
+* -- end_word - hash map for end words of sentence
 */
 
 
 // Text to Transition Matrix
-float** TextToMatrix(std::string input_text)
+std::vector<std::unordered_map<std::string, int>> parser(std::string input_text)
 {
 	bool isStart = true;
 	bool isEnd = false;
 
 	std::string tempStr = "";
 	char nextChar = ' ';
+
+	std::vector<std::unordered_map<std::string, int>> wordArr[3];
 
 	std::unordered_map<std::string, int> unic_word;
 	std::unordered_map<std::string, int> start_word;
@@ -92,6 +95,10 @@ float** TextToMatrix(std::string input_text)
 		}
 	}
 
+	wordArr->push_back(unic_word);
+	wordArr->push_back(start_word);
+	wordArr->push_back(end_word);
+
 	// Test cycles for unordered maps
 	std::cout << "unic_word: " << std::endl;
 	for (auto& pair : unic_word)
@@ -114,9 +121,7 @@ float** TextToMatrix(std::string input_text)
 	}
 	std::cout << std::endl;
 
-	float** transition_matrix = {};
-
-	return transition_matrix;
+	return *wordArr;
 }
 
 
@@ -125,6 +130,6 @@ int main()
 	std::string str = "";
 	std::getline(std::cin, str);
 
-	TextToMatrix(str);
+	parser(str);
 	return 0;
 }
