@@ -15,7 +15,7 @@
 */
 
 
-// Text to Transition Matrix
+// Text to Vector of Hash Maps
 std::vector<std::unordered_map<std::string, int>> parser(std::string input_text)
 {
 	bool isStart = true;
